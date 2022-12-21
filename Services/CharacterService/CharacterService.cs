@@ -76,15 +76,18 @@ namespace dotnet_Rpg6.Services.CharacterService
             
             try
             {
-            Character character = characters.FirstOrDefault(c => c.Id == updatedCharacter.Id);
+            var character = await _context.Characters
+            .FirstOrDefaultAsync(c => c.Id == updatedCharacter.Id);
 
             _mapper.Map(updatedCharacter, character);
-           // character.Name = updatedCharacter.Name;
-            //character.HitPoints = updatedCharacter.HitPoints;
-            //character.Strength = updatedCharacter.Strength;
-            //character.Defense = updatedCharacter.Defense;
-            //character.Intelligence = updatedCharacter.Intelligence;
-            //character.Class = updatedCharacter.Class;
+            character.Name = updatedCharacter.Name;
+            character.HitPoints = updatedCharacter.HitPoints;
+            character.Strength = updatedCharacter.Strength;
+            character.Defense = updatedCharacter.Defense;
+            character.Intelligence = updatedCharacter.Intelligence;
+            character.Class = updatedCharacter.Class;
+
+            await _context.SaveChangesAsync();
               
             response.Data = _mapper.Map<GetCharacterDto>(character);
             } 
