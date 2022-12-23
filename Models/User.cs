@@ -11,6 +11,7 @@ namespace dotnet_Rpg6.Models
         public string Username { get; set; } = string.Empty;
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
+        public List<Character>? Characters  { get; set; }
 
     }
 }
