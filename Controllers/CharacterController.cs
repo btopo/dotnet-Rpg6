@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using dotnet_Rpg6.Dtos.Character;
 using dotnet_Rpg6.Services.CharacterService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace dotnet_Rpg6.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CharacterController : ControllerBase 
@@ -19,6 +21,7 @@ namespace dotnet_Rpg6.Controllers
                 _characterService = characterService;
         }       
 
+         
          [HttpGet("GetAll")]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> Get()
         {
