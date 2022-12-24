@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using dotnet_Rpg6.Dtos.Character;
 using dotnet_Rpg6.Services.CharacterService;
@@ -25,7 +26,8 @@ namespace dotnet_Rpg6.Controllers
          [HttpGet("GetAll")]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> Get()
         {
-            return Ok(await _characterService.GetAllCharacters());
+            int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            return Ok(await _characterService.GetAllCharacters(userId));
         }
          
           [HttpDelete("{id}")]
