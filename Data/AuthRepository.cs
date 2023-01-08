@@ -100,7 +100,9 @@ namespace dotnet_Rpg6.Data
                 new Claim(ClaimTypes.Name, user.Username)
 
             };
+            
 
+            
             SymmetricSecurityKey key = new SymmetricSecurityKey(System.Text.Encoding.UTF8
                 .GetBytes(_configuration.GetSection("AppSettings:Token").Value));
 
