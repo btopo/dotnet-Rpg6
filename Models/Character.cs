@@ -16,5 +16,6 @@ namespace dotnet_Rpg6.Models
         public RpgClass Class { get; set; } 
         public User? User { get; set; }
         public Weapon Weapon { get; set; }
+        public List<Skill> Skills { get; set; }
     }
 }
