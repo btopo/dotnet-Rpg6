@@ -44,12 +44,17 @@ namespace dotnet_Rpg6.Services.CharacterService.WeaponService
                     Damage = newWeapon.Damage,
                     Character = character
                 };
+
+                _context.Weapons.Add(weapon);
+                await _context.SaveChangesAsync();
+                response.Data = _mapper.Map<GetCharacterDto>(character);
             }
             catch(Exception ex)
             {
                 response.Success = false;
                 response.Message = ex.Message;
             }
+            return response;
         }
     }
 }

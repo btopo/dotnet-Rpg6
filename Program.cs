@@ -1,6 +1,7 @@
 global using dotnet_Rpg6.Models;
 using dotnet_Rpg6.Data;
 using dotnet_Rpg6.Services.CharacterService;
+using dotnet_Rpg6.Services.CharacterService.WeaponService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -40,6 +41,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         ValidateAudience = false    
     };
 });
+builder.Services.AddScoped<IWeaponService, WeaponService>();
 
 var app = builder.Build();
 
